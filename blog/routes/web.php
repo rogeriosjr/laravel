@@ -16,3 +16,61 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/hello', function () {
+    return view("Hello World!!");
+});
+Route::get('/produtos/{flag?}', function ($flag = '') {
+    return "Todas as produtos: " . $flag ;
+});
+Route::get('/categoria/{flag}', function ($flag) {
+    return "Categoria: " . $flag;
+});
+
+// Redirecionamento de rota
+Route::redirect('/redirect3', '/redirect2'); // não está funcionando
+Route::get('/redirect1', function () {
+    return redirect('/redirect2');
+});
+Route::get('/redirect2', function () {
+    return "Redirect 2: ";
+});
+
+Route::view('/view', 'welcome');
+
+// Não funciona
+Route::get('/redirect4', function () {
+    return redirect()->route('url-name');
+});
+Route::get('/name-url', function () {
+    return "Redirect name-url: ";
+})->name('url.name');
+
+// Ultilizando grupos de rotas e filtros
+/*
+Route::middleware([])->group(function () {
+	
+	Route::prefix('admin')->group(function () {
+
+		Route::namespace('Admin')->group(function () {
+			Route::get('/dashborad', 'TesteController@teste');
+			Route::get('/financeiro', 'TesteController@teste');
+			Route::get('/', 'TesteController@teste');
+		});
+
+	});
+
+});
+*/
+Route::group([
+	'middleware' => [],
+	'prefix'     => 'admin',
+	'namespace'	 => 'Admin'
+], function () {
+	Route::get('/dashborad', 'TesteController@teste');
+	Route::get('/financeiro', 'TesteController@teste');
+	Route::get('/', 'TesteController@teste');
+});
+
+Route::get('/login', function () {
+    return "Fazer login";
+})->name('login');
