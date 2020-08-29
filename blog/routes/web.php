@@ -76,12 +76,18 @@ Route::get('/login', function () {
 })->name('login');
 
 // Pode ser assim, mas tem maneiras mais fáceis
-// Route::resource('products', 'ProductController');
+Route::resource('products', 'ProductController'); //->middleware('auth');
 
+/*
 Route::delete('products/{id}', 'ProductController@destroy')->name('products.destroy');
 Route::put('produtcs/{id}', 'ProductController@update')->name('products.update');
-Route::get('products/{id}/edit', 'ProductController@edit')->name('products.edit');
-Route::get('products/create', 'ProductController@create')->name('products.create');
+
 Route::get('products/{id}', 'ProductController@show')->name('products.show');
-Route::get('produtcs', 'ProductController@index')->name('products.index');
+Route::get('products/{id}/edit', 'ProductController@edit')->name('products.edit');
+
+Route::get('products/create', 'ProductController@create')->name('products.create');
+
+Route::get('products', 'ProductController@index')->name('products.index');
+
 Route::post('products/{id}/store', 'ProductController@save')->name('products.store');
+*/
