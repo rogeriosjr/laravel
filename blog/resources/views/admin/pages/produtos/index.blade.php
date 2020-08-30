@@ -3,7 +3,8 @@
 
 @section('content')
 	<h1>Exibindo os produtos</h1>
-	<a href="{{ route('produtos.create') }}">Cadastrar</a>
+	<a href="{{ route('produtos.create') }}">Cadastrar</a><br>
+	<a href="{{ route('produtos.edit',1) }}">Editar 1</a>
 	{{-- Incluindo --}}
 	@include('admin.includes.alerts', ['content' => "Alerta de preços de produtos"])
 
