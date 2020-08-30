@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/hello', function () {
     return view("Hello World!!");
 });
-Route::get('/produtos/{flag?}', function ($flag = '') {
+Route::get('/produtoss/{flag?}', function ($flag = '') {
     return "Todas as produtos: " . $flag ;
 });
 Route::get('/categoria/{flag}', function ($flag) {
@@ -75,8 +75,13 @@ Route::get('/login', function () {
     return "Fazer login";
 })->name('login');
 
+Route::get('products', function () {
+    return "Fazer login";
+})->name('products');
+
 // Pode ser assim, mas tem maneiras mais fáceis
 Route::resource('products', 'ProductController'); //->middleware('auth');
+Route::resource('produtos', 'ProdutoController');
 
 /*
 Route::delete('products/{id}', 'ProductController@destroy')->name('products.destroy');
