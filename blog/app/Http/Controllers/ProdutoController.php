@@ -40,7 +40,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.produtos.create');
     }
 
     /**
@@ -52,6 +52,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request);
     }
 
     /**
